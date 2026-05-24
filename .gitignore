@@ -1,0 +1,32 @@
+# --- Sample / input data (kept locally, not committed) ---------------
+sample*/
+*.ply
+*.mat
+test.jpg
+
+# --- Pipeline outputs ------------------------------------------------
+*_p2pc_alignment.mat
+*_p2pc_overlay.png
+*_p2pc_cropped.png
+*_p2pc_colored_cloud.ply
+
+# --- MATLAB autosaves / build junk -----------------------------------
+*.asv
+*.m~
+*.autosave
+*.mex*
+slprj/
+sccprj/
+codegen/
+*.slxc
+octave-workspace
+
+# --- Editor / OS / tooling clutter -----------------------------------
+.claude/
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
