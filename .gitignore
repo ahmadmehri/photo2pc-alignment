@@ -2,9 +2,9 @@
 sample*/
 *.ply
 *.mat
-# Whitelist a small sample cloud so users can try the GUI immediately.
+# Whitelist a small sample cloud + photo so users can try the GUI
+# immediately without bringing their own data.
 !face.mat
-test.jpg
 
 # --- Pipeline outputs ------------------------------------------------
 *_p2pc_alignment.mat

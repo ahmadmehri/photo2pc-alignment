@@ -6,12 +6,6 @@ photo-recoloured cloud plus a per-pixel link back to the cloud — built
 to support downstream geologic segmentation work on the cropped 2-D
 image and re-projection of those annotations onto the 3-D cloud.
 
-![Final result — original scanner colours (left) vs photo-recoloured cloud (right)](<7-Cloud Compare.jpg>)
-
-*Headline result: the original scanner cloud on the left, the same
-cloud after the photo has been projected onto it on the right.  Camera
-controls are linked so the two views rotate in lock-step.*
-
 ---
 
 ## What's in here
@@ -31,35 +25,6 @@ controls are linked so the two views rotate in lock-step.*
 - **Tunnel-face crop step** before manual picking — auto-seeded face mask that you can confirm or repaint with a brush editor (add/remove regions, expand/shrink borders). The picker dims non-face areas so you only pick face features.
 - **Flip view** button in the manual picker re-renders the synth ortho from the opposite side of the plane in one click — useful when the SVD normal lands on the wrong face.
 - **Switching mode resets the pipeline** (with a confirmation if you have unsaved work) so you can't end up with stale fields from a previous run.
-
----
-
-## Visual walkthrough
-
-### 1. Inputs
-
-![Inputs tab — point cloud and photo](1-inputs.jpg)
-
-The pipeline starts from a coloured 3-D point cloud (left) and an RGB
-photo of the same tunnel face (right).
-
-### 2. Plane fit and synthetic ortho render
-
-![Plane fit, synth render, and equalised pair](2-Plane-Synth-Equlised.jpg)
-
-SVD finds the dominant face plane.  The cloud is then projected
-orthographically along its normal to give a synthetic "straight-on"
-image of the face — this is what the photo gets matched against.  The
-equalised pair on the bottom row is CLAHE-normalised so the feature
-detectors compare gradient structure rather than absolute brightness.
-
-### 3. Feature matches
-
-![Raw cross-detector matches between photo and synth](4-Matches.jpg)
-
-SIFT + KAZE + ORB descriptors are detected on both images and matched
-independently; the union (orange lines) feeds the next stage's
-projective RANSAC, which filters for geometric consistency before PnP.
 
 ---
 
@@ -189,11 +154,10 @@ plot(uv(valid, 1), uv(valid, 2), 'r.');
 
 ## Notes
 
-- A small sample point cloud, `face.mat` (~14 MB), is committed so you
-  can run the GUI immediately without bringing your own data — just
-  pair it with any tunnel-face photo. Larger sample sets (`sample*/`
-  folders and stand-alone `*.ply` / `test.jpg`) stay local via
-  `.gitignore`.
+- A sample point cloud (`face.mat`, ~14 MB) and a sample tunnel-face
+  photo (`test.jpg`) are committed so you can run the GUI immediately
+  without bringing your own data. Larger sample sets (`sample*/`
+  folders and other stand-alone `*.ply`) stay local via `.gitignore`.
 - The first time you run the auto pipeline on a new cloud it can take
   10-30 s on the synth render + feature detection. Manual mode runs in
   a few seconds because it skips that work.
