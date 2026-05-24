@@ -189,9 +189,11 @@ plot(uv(valid, 1), uv(valid, 2), 'r.');
 
 ## Notes
 
-- Sample tunnel-face data (`*.ply`, `*.jpg`, `face.mat`) is excluded by
-  `.gitignore`. Drop your own files into `sample1/`, `sample2/`, etc.
-  to test.
+- A small sample point cloud, `face.mat` (~14 MB), is committed so you
+  can run the GUI immediately without bringing your own data — just
+  pair it with any tunnel-face photo. Larger sample sets (`sample*/`
+  folders and stand-alone `*.ply` / `test.jpg`) stay local via
+  `.gitignore`.
 - The first time you run the auto pipeline on a new cloud it can take
   10-30 s on the synth render + feature detection. Manual mode runs in
   a few seconds because it skips that work.

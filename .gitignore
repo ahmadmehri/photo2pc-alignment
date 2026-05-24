@@ -2,6 +2,8 @@
 sample*/
 *.ply
 *.mat
+# Whitelist a small sample cloud so users can try the GUI immediately.
+!face.mat
 test.jpg
 
 # --- Pipeline outputs ------------------------------------------------
